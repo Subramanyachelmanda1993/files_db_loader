@@ -30,8 +30,8 @@ def to_sql(df, db_conn_uri, ds_name):
 
 
 def db_loader(src_base_dir, db_conn_uri, ds_name):
-    schemas = json.load(open(f'{src_base_dir}\\schemas.json'))
-    files = glob.glob(f'{src_base_dir}\\{ds_name}\\part-*')
+    schemas = json.load(open(f'{src_base_dir}/schemas.json'))
+    files = glob.glob(f'{src_base_dir}/{ds_name}/part-*')
     if len(files) == 0:
         raise NameError(f'No files found for {ds_name}')
 
@@ -50,7 +50,8 @@ def process_files(ds_names=None):
     db_user = os.environ.get('DB_USER')
     db_pass = os.environ.get('DB_PASS')
     db_conn_uri = f'postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}'
-    schemas = json.load(open(f'{src_base_dir}\\schemas.json'))
+    os.listdir(src_base_dir)
+    schemas = json.load(open(f'{src_base_dir}\schemas.json'))
     if not ds_names:
         ds_names = schemas.keys()
     for ds_name in ds_names:
