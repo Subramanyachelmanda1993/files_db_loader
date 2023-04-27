@@ -30,8 +30,8 @@ def to_sql(df, db_conn_uri, ds_name):
 
 
 def db_loader(src_base_dir, db_conn_uri, ds_name):
-    schemas = json.load(open(f'{src_base_dir}/schemas.json'))
-    files = glob.glob(f'{src_base_dir}/{ds_name}/part-*')
+    schemas = json.load(open(f'{src_base_dir}\schemas.json'))
+    files = glob.glob(f'{src_base_dir}\{ds_name}\part-*')
     if len(files) == 0:
         raise NameError(f'No files found for {ds_name}')
 
